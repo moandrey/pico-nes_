@@ -52,7 +52,7 @@ jobs:
           else
                echo "The string does not start with 'refs/tags/'."
           fi
-          grep "pico_set_program_version" CMakeLists.txt
+          grep "pico_set_program_version" CMakeLists.txt  || true
 
       - name: Install Pico SDk
         run: |

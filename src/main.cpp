@@ -1447,9 +1447,6 @@ int main() {
         gpio_put(PICO_DEFAULT_LED_PIN, false);
     }
 
-    #uint8_t link = testPins(VGA_BASE_PIN, VGA_BASE_PIN + 1);
-   #SELECT_VGA = (link == 0) || (link == 0x1F);
-    
     SELECT_VGA = false;
 
     // board_init();

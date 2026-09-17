@@ -1463,8 +1463,8 @@ int main() {
     multicore_launch_core1(render_core);
     sem_release(&vga_start_semaphore);
 
-    f_mount(&fs, "", 1);
-    f_mkdir(HOME_DIR);
+    // f_mount(&fs, "", 1);
+    // f_mkdir(HOME_DIR);
     load_config();
 
 #ifndef BUILD_IN_GAMES

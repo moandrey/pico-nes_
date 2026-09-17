@@ -349,6 +349,26 @@ static void process_generic_report(uint8_t dev_addr, uint8_t instance, uint8_t c
         process_mouse_report( (hid_mouse_report_t const*) report );
       break;
 
+      case HID_USAGE_DESKTOP_JOYSTICK:
+      case HID_USAGE_DESKTOP_GAMEPAD:
+        if (len >= 6) {
+          // Крестик (Оси X и Y)
+          gamepad1_bits.left = (report[0] < 0x40);
+          gamepad1_bits.right = (report[0] > 0xC0);
+          gamepad1_bits.up = (report[1] < 0x40);
+          gamepad1_bits.down = (report[1] > 0xC0);
+          
+          // Кнопки (расшифровка для DragonRise)
+          gamepad1_bits.b = (report[4] & 0x20) != 0;      // Кнопка B (B1)
+          gamepad1_bits.a = (report[4] & 0x40) != 0;      // Кнопка A (B2)
+          gamepad1_bits.select = (report[4] & 0x08) != 0; // Кнопка Select на Зет (B4)
+          gamepad1_bits.start = (report[5] & 0x20) != 0;  // Кнопка Start (B9)
+        }
+      break;
+
+
+      
+
       default: break;
     }
   }

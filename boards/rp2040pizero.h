@@ -30,7 +30,7 @@
 #define VGA_BASE_PIN 22
 
 // HDMI 8 pins starts from pin:
-#define HDMI_BASE_PIN 22
+#define HDMI_BASE_PIN 14
 
 // TFT
 #define TFT_CS_PIN 22

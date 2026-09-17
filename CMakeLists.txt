@@ -80,7 +80,6 @@ add_subdirectory(drivers/tv)
 add_subdirectory(drivers/tv-software)
 add_subdirectory(drivers/graphics)
 
-#target_compile_definitions(${PROJECT_NAME} PRIVATE VGA)
 
 # INCLUDE FILES THAT SHOULD BE COMPILED:
 file(GLOB_RECURSE SRC "src/*.cpp" "src/*.c"
@@ -220,9 +219,7 @@ IF(TFT)
         SET(BUILD_NAME "${BUILD_NAME}-ST7789")
     ENDIF()
 ELSEIF(HDMI)
-    target_link_libraries(${PROJECT_NAME} PRIVATE vga-nextgen)
     target_link_libraries(${PROJECT_NAME} PRIVATE hdmi)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE VGA)
     target_compile_definitions(${PROJECT_NAME} PRIVATE HDMI)
     SET(BUILD_NAME "${BUILD_NAME}-VGA-HDMI")
 ELSEIF(TV)
@@ -234,8 +231,6 @@ ELSEIF(SOFTTV)
 	target_link_libraries(${PROJECT_NAME} PRIVATE tv-software)
 	SET(BUILD_NAME "${BUILD_NAME}-TV-SOFT")
 ELSE()
-    target_compile_definitions(${PROJECT_NAME} PRIVATE VGA)
-    target_link_libraries(${PROJECT_NAME} PRIVATE vga-nextgen)
     SET(BUILD_NAME "${BUILD_NAME}-VGA")
 ENDIF()
 
